@@ -1,0 +1,14 @@
+			//自己指定一个类型转换器（将String转成Date）
+			ConvertUtils.register(new Converter() {
+				public Object convert(Class clazz, Object value) {
+					//将string转成date
+					SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+					Date parse = null;
+					try {
+						parse = format.parse(value.toString());
+					} catch (ParseException e) {
+						e.printStackTrace();
+					}
+					return parse;
+				}
+			}, Date.class);
